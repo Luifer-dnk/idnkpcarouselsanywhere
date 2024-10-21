@@ -1,0 +1,72 @@
+imports:
+  - { resource: ./common.yml }
+
+services:
+
+  # Form services
+  idnksoft.idnkpcarousel.type.carousel:
+    class: 'IdnkSoft\Back\IdnkpCarousel\Form\CarouselType'
+    parent: 'form.type.translatable.aware'
+    public: true
+    arguments:
+      - '@=service("prestashop.adapter.multistore_feature").isUsed()'
+    tags:
+      - { name: form.type }
+
+  idnksoft.idnkpcarousel.form.data_provider.carousel:
+    class: 'IdnkSoft\Back\IdnkpCarousel\Form\CarouselFormDataProvider'
+    arguments:
+      - '@idnksoft.idnkpcarousel.repository.carousel'
+
+  idnksoft.idnkpcarousel.form.data_handler.carousel:
+    class: 'IdnkSoft\Back\IdnkpCarousel\Form\CarouselFormDataHandler'
+    arguments:
+      - '@idnksoft.idnkpcarousel.repository.carousel'
+      - '@prestashop.core.admin.lang.repository'
+      - '@doctrine.orm.default_entity_manager'
+
+  # Factory
+  idnksoft.idnkpcarousel.form.builder.carousel:
+    class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Builder\FormBuilder'
+    factory: 'prestashop.core.form.builder.form_builder_factory:create'
+    public: true
+    arguments:
+      - 'IdnkSoft\Back\IdnkpCarousel\Form\CarouselType'
+      - '@idnksoft.idnkpcarousel.form.data_provider.carousel'
+
+  idnksoft.idnkpcarousel.form.handler.carousel:
+    class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Handler\FormHandler'
+    factory: 'prestashop.core.form.identifiable_object.handler.form_handler_factory:create'
+    public: true
+    arguments:
+      - '@idnksoft.idnkpcarousel.form.data_handler.carousel'
+
+  # Grid services
+  idnksoft.idnkpcarousel.grid.definition.factory.carousel:
+    class: 'IdnkSoft\Back\IdnkpCarousel\Grid\CarouselGridDefinitionFactory'
+    parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
+
+  idnksoft.idnkpcarousel.grid.query_builder.carousel:
+    class: 'IdnkSoft\Back\IdnkpCarousel\Grid\CarouselQueryBuilder'
+    parent: 'prestashop.core.grid.abstract_query_builder'
+    public: true
+    arguments:
+      - '@prestashop.core.query.doctrine_search_criteria_applicator'
+      - "@=service('prestashop.adapter.legacy.context').getContext().language.id"
+
+  idnksoft.idnkpcarousel.grid.data_provider.carousel:
+    class: '%prestashop.core.grid.data.factory.doctrine_grid_data_factory%'
+    arguments:
+      - '@idnksoft.idnkpcarousel.grid.query_builder.carousel'
+      - '@prestashop.core.hook.dispatcher'
+      - '@prestashop.core.grid.query.doctrine_query_parser'
+      - 'carousel'
+
+  idnksoft.idnkpcarousel.grid.factory.carousel :
+    class: 'PrestaShop\PrestaShop\Core\Grid\GridFactory'
+    public: true
+    arguments:
+      - '@idnksoft.idnkpcarousel.grid.definition.factory.carousel'
+      - '@idnksoft.idnkpcarousel.grid.data_provider.carousel'
+      - '@prestashop.core.grid.filter.form_factory'
+      - '@prestashop.core.hook.dispatcher'

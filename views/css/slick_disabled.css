@@ -1,0 +1,15 @@
+.idnkcp___header.carousel__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+a.all-product-link {
+    text-align: center;
+}
+.products.products-slick.spacing-md-top.products--slickmobile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

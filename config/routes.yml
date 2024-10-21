@@ -1,0 +1,61 @@
+idnkpcarousel_carousel_index:
+  path: /idnk-soft/carousel
+  methods: [ GET ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::indexAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+    
+idnkpcarousel_carousel_search:
+  path: /idnk-soft/carousel
+  methods: [ POST ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::searchAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+    
+idnkpcarousel_carousel_create:
+  path: /idnk-soft/carousel/new
+  methods: [ GET, POST ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::createAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+
+idnkpcarousel_carousel_edit:
+  path: /idnk-soft/carousel/{carouselId}/edit
+  methods: [ GET, POST ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::editAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+  requirements:
+    carouselId: \d+
+
+idnkpcarousel_carousel_delete:
+  path: /idnk-soft/carousel/{carouselId}/delete
+  methods: [ DELETE ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::deleteAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+  requirements:
+    carouselId: \d+
+
+idnkpcarousel_carousel_bulk_delete:
+  path: /idnk-soft/carousel/bulkDelete
+  methods: [ POST ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::deleteBulkAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+
+idnkpcarousel_toggle_status:
+  path: /idnk-soft/carousel/{carouselId}/toggle
+  methods: [ POST ]
+  defaults:
+    _controller: 'IdnkSoft\Back\IdnkpCarousel\Controller\AdminCarouselController::toggleAction'
+    _legacy_controller: 'AdminCarouselControllerLegacyClass'
+    _legacy_link: 'AdminCarouselControllerLegacyClass'
+  requirements:
+    carouselId: \d+

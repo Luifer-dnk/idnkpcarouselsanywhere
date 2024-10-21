@@ -1,0 +1,12 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col">
+            {% include '@Modules/idnkpcarouselsanywhere/views/templates/admin/form.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('../modules/idnkpcarouselsanywhere/views/js/form.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+{% trans_default_domain "Admin.Design.Feature" %}
+
+{% block content %}
+    {% block carousels_list_panel %}
+        <div class="row">
+            <div class="col">
+                {% include '@PrestaShop/Admin/Common/Grid/grid_panel.html.twig' with {'grid': carouselGrid} %}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('themes/default/js/bundle/pagination.js') }}"></script>
+    <script src="{{ asset('../modules/idnkpcarouselsanywhere/views/js/index.js') }}"></script>
+    <script src="{{ asset('../modules/idnkpcarouselsanywhere/views/js/form.js') }}"></script>
+{% endblock %}

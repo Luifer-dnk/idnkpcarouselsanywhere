@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    public: true
+
+  idnksoft.idnkpcarousel.repository.carousel:
+    class: IdnkSoft\Back\IdnkpCarousel\Repository\CarouselRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - IdnkSoft\Back\IdnkpCarousel\Entity\Carousel
