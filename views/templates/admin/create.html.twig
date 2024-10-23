@@ -1,12 +1,28 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
+
 {% block content %}
-    <div class="row justify-content-center">
-        <div class="col">
-            {% include '@Modules/idnkpcarouselsanywhere/views/templates/admin/form.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ 'Carousel Configuration'|trans({}, 'Modules.IdnkPCarouselsanywhere.Admin') }}</h3>
+                    </div>
+                    <div class="card-body">
+                        {% include '@Modules/idnkpcarouselsanywhere/views/templates/admin/form.html.twig' %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('../modules/idnkpcarouselsanywhere/views/js/form.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('../modules/idnkpcarouselsanywhere/views/css/custom_form.css') }}">
 {% endblock %}

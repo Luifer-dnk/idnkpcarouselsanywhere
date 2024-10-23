@@ -16,20 +16,31 @@ class IdnkPCarouselsanywhere extends Module implements WidgetInterface
 {
     public const IDNK_HOOK_AVALAIBLE = [
         'Display Home' => 'displayHome',
-        'Display Home 2' => 'displayHome2',
         'Display Top' => 'displayTopColumn',
         'Right column' => 'displayRightColumn',
         'Left column' => 'displayLeftColumn',
         'Wrapper top' => 'displayWrapperTop',
+        'Content Wrapper top' => 'displayContentWrapperTop',
         'Wrapper bottom' => 'displayWrapperBottom',
+        'Content Wrapper bottom' => 'displayContentWrapperBottom',
         'Footer product' => 'displayFooterProduct',
         'Product extra content' => 'displayProductExtraContent',
         'Product additional info' => 'displayProductAdditionalInfo',
         'Footer' => 'displayFooter',
+        'Footer Category' => 'displayFooterCategory',
         'Header' => 'displayHeader',
+        'Header Category' => 'displayHeaderCategory',
         'Before footer' => 'displayFooterBefore',
         'Shopping cart' => 'displayShoppingCart',
+        'Shopping cart Footer' => 'displayShoppingCartFooter',
         'Order details' => 'displayOrderDetail',
+        'Reasurance' => 'displayReassurance',
+        'After Carrier' => 'displayAfterCarrier',
+        'Payment By Binaries' => 'displayPaymentByBinaries',
+        'Order Confirmation' => 'displayOrderConfirmation',
+        'Customer Account Form' => 'displayCustomerAccountForm',
+        'GDPR Content' => 'displayGDPRContent',
+
     ];
 
     public const IDNK_ORDER_BY = [
@@ -137,7 +148,7 @@ class IdnkPCarouselsanywhere extends Module implements WidgetInterface
                 'input' => [
                     [
                         'type' => 'switch',
-                        'label' => $this->trans('Enable Slider library (model)', [], 'Modules.IdnkPCarouselsanywhere.Admin'),
+                        'label' => $this->trans('Carousel or Grid mode', [], 'Modules.IdnkPCarouselsanywhere.Admin'),
                         'name' => 'IDNK_ENABLE_SLICK',
                         'is_bool' => true,
                         'values' => [
@@ -152,6 +163,7 @@ class IdnkPCarouselsanywhere extends Module implements WidgetInterface
                                 'label' => $this->trans('No',[],'Modules.IdnkPCarouselsanywhere.Admin')
                             ]
                         ],
+                        'desc' => $this->trans('When enabled, the animated gallery is displayed. When disabled it is displayed in grid mode.', [], 'Modules.IdnkPCarouselsanywhere.Admin'),
                     ],
                 ],
                 'submit' => [
@@ -190,6 +202,25 @@ class IdnkPCarouselsanywhere extends Module implements WidgetInterface
     public function renderWidget($hookName = null, array $configuration = []): string
     {
         $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
+
+        // Detectar el tema activo
+        $theme = $this->context->shop->theme->get('name');
+
+        // Seleccionar plantilla de bloques de categorías según el tema
+        if ($theme == 'classic') {
+            $product_template = 'catalog/_partials/miniatures/product.tpl'; // Plantilla de miniaturas en el tema classic
+        } elseif ($theme == 'child_classic') {
+            $product_template = 'catalog/_partials/miniatures/product.tpl'; // Plantilla de miniaturas en child_classic
+        } elseif ($theme == 'hummingbird') {
+            $product_template = 'catalog/_partials/miniatures/product.tpl'; // Plantilla de miniaturas en hummingbird
+        } else {
+            $product_template = 'catalog/_partials/miniatures/product.tpl'; // Plantilla por defecto
+        }
+
+        $this->context->smarty->assign([
+            'product_template' => $product_template, // Asignar plantilla de miniaturas
+        ]);
+
         return $this->fetch($this->templateFile);
     }
 
@@ -310,8 +341,8 @@ class IdnkPCarouselsanywhere extends Module implements WidgetInterface
     public function hookDisplayHeader(): void
     {
         if (Configuration::get('IDNK_ENABLE_SLICK') == true) {
-            $this->context->controller->addCSS($this->_path . 'views/css/slick.css');
-            $this->context->controller->addCSS($this->_path . 'views/css/slick-theme.css');
+            $this->context->controller->addCSS($this->_path . 'views/css/slick-ipce.css');
+            $this->context->controller->addCSS($this->_path . 'views/css/slick-theme-ipce.css');
             $this->context->controller->addCSS($this->_path . 'views/css/swiper-bundle.min.css');
             $this->context->controller->addJS($this->_path . 'views/js/slick.min.js');
             $this->context->controller->addJS($this->_path . 'views/js/slick_front.js');

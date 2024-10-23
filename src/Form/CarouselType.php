@@ -54,14 +54,15 @@ class CarouselType extends TranslatorAwareType
                 IntegerType::class,
                 [
                     'label' => $this->trans('Product number', 'Modules.IdnkPCarouselsanywhere.Admin'),
-                    'help' => $this->trans('Number of product Hook to display', 'Modules.IdnkPCarouselsanywhere.Admin'),
+                    
                 ]
             )
             ->add(
                 'nb_product_to_show',
                 IntegerType::class,
                 [
-                    'label' => $this->trans('Product to show', 'Modules.IdnkPCarouselsanywhere.Admin')
+                    'label' => $this->trans('Product to show', 'Modules.IdnkPCarouselsanywhere.Admin'),
+                    
                 ]
             )
             ->add(

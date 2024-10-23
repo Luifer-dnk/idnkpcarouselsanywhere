@@ -9,7 +9,12 @@ a.all-product-link {
     text-align: center;
 }
 .products.products-slick.spacing-md-top.products--slickmobile {
+    margin: 0;
+}
+.products-slick .js-product.product{
+    padding: 5px;
+}
+.container.footer-link-ipce {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-end;
 }

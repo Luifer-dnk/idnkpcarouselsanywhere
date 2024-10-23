@@ -1,5 +1,9 @@
 /* Slider */
-
+.ipce-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 .slick-slider {
     position: relative;
     display: block;
@@ -110,6 +114,7 @@ div.slick-slide {
 }
 .idnkcp___header.carousel__header {
     position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -117,4 +122,31 @@ div.slick-slide {
 }
 a.all-product-link {
     text-align: center;
+}
+
+.products.products-slick .slick-list.draggable {
+    padding-bottom: 75px;
+}
+button.slick-prev.slick-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    background: #000;
+    border-radius: 50%;
+}
+button.slick-next.slick-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    background: #000;
+    border-radius: 50%;
+}
+.container.footer-link-ipce {
+    display: flex;
+    justify-content: flex-end;
+}
+.container.footer-link-ipce a {
+    margin: 0;
 }

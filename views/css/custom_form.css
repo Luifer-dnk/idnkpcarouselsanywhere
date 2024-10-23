@@ -1,0 +1,46 @@
+.container {
+    margin-top: 30px;
+}
+
+.card {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.card-header {
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-header:first-child {
+    color: #181818;
+}
+
+.card-text:last-child {
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.card-footer {
+    padding: 1.925rem 1.9375rem;
+    background-color: transparent;
+    border-top: 1px solid #dbe6e9;
+}
+

@@ -11,7 +11,7 @@
  * @license   Commercial license
  */
 
-$sql = array();
+$sql = [];
 // Install table for slider
 $sql[] = "CREATE TABLE IF NOT EXISTS `" . _DB_PREFIX_ . "idnk_carousel` (
           `id_carousel`   int(10) unsigned NOT NULL AUTO_INCREMENT,
